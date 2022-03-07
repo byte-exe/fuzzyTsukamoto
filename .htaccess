@@ -1,0 +1,7 @@
+ErrorDocument 404 /login.php
+DirectoryIndex login.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+</IfModule>
