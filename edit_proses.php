@@ -10,12 +10,14 @@ $persediaan = $_POST['persediaan'];
 $produksi = $_POST['produksi'];
 
 $query="UPDATE perhitungan SET tanggal='$tanggal', jenis_kopi='$jenis_kopi', permintaan='$permintaan', persediaan='$persediaan', produksi=$produksi WHERE idproduksi='$idproduksi'";
-$result=mysqli_query($link, $query);
+$result=mysqli_query($koneksi,$query);
 
 if(!$result){
-    die ("Query Gagal Dijalankan: ".mysqli_errno($link).
-    " - ".mysqli_error($link));
+    die ("Query Gagal Dijalankan: ".mysqli_errno($koneksi).
+    " - ".mysqli_error($koneksi));
     }
+    echo "<script>alert('Data Berhasil Diubah')</script>";
 }
-header("location:laporan.php");
+
+header("location:tambah_data.php");
 ?>

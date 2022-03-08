@@ -1,25 +1,7 @@
 <?php
    include 'koneksi.php';
-
-if(isset($_GET['idproduksi'])){
-    $idbarang=($_GET["idproduksi"]);
-    $query="SELECT*FROM perhitungan WHERE idproduksi='$idproduksi'";
-    $result=mysqli_query($link,$query);
-
-    if(!$result){
-        die("Query Error:".mysqli_errno($link).
-        " - ".mysqli_error($link));
-    }
-    $data=mysqli_fetch_assoc($result);
-    $tanggal=$data["tanggal"];
-    $jenis_kopi=$data["jenis_kopi"];
-    $permintaan=$data["permintaan"];
-    $persediaan=$data["persediaan"];
-    $produksi=$data["produksi"];
-
-} else{
-    header("locaton.tambah_data.php");
-}
+   $sql = mysqli_query($koneksi, "select * from perhitungan where idproduksi='$_GET[idproduksi]'");
+   $hasil = mysqli_fetch_array($sql);
 ?>
 
 <?php include 'header.php' ?>
@@ -27,21 +9,21 @@ if(isset($_GET['idproduksi'])){
 <html>
    <body>
     <header>
-       <center><h3>EDIT DATA BARANG</h3></center>
+       <center><h3>EDIT DATA PRODUKSI</h3></center>
       <form id="perhitungan" action="edit_proses.php" method="post">
       <table cellpadding="2">
                 <tr>
                     <td>Id Produksi</td>
-                    <td><input type="text" name="idproduksi" id="idproduksi" required=""></td>
+                    <td><input type="text" name="idproduksi" id="idproduksi" value="<?php echo "$hasil[idproduksi]";?>" readonly></td>
                 </tr>
                 <tr>
                     <td>Tanggal</td>
-                    <td><input type="date" name="tanggal"></td>
+                    <td><input type="date" name="tanggal" value="<?php echo "$hasil[tanggal]";?>"></td>
                 </tr>
                 <tr>
                     <td>Jenis Kopi</td>
                 <td>
-                    <select name="jenis_kopi" id="jenis_kopi" required="">
+                    <select name="jenis_kopi" id="jenis_kopi" require>
                     <option value="Kopi 20 Gram">Kopi 20 Gram</option>
 			        <option value="Kopi 50 Gram">Kopi 50 Gram</option>
 			        <option value="Kopi 100 Gram">Kopi 100 Gram</option>
@@ -52,15 +34,15 @@ if(isset($_GET['idproduksi'])){
                 </tr>
                 <tr>
                     <td>Permintaan</td>
-                    <td><input type="text" name="permintaan"></td>
+                    <td><input type="text" name="permintaan" value="<?php echo "$hasil[permintaan]";?>"></td>
                 </tr>
                 <tr>
                     <td>Persediaan</td>
-                    <td><input type="text" name="persediaan"></td>
+                    <td><input type="text" name="persediaan"value="<?php echo "$hasil[persediaan]";?>"></td>
                 </tr>
                 <tr>
                     <td>Produksi</td>
-                    <td><input type="text" name="produksi"></td>
+                    <td><input type="text" name="produksi" value="<?php echo "$hasil[produksi]";?>"></td>
                 </tr>
                 <center>
                 <tr>

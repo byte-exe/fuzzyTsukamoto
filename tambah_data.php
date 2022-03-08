@@ -62,27 +62,35 @@
              <th>Permintaan</th>
              <th>Persediaan</th>
              <th>Produksi</th>
+             <th colspan=2>Aksi</th>
          </tr>
-         <?php
-         $no=1;
-         $sql=mysqli_query($koneksi," select * from perhitungan");
-         while($data=mysqli_fetch_array($sql)){
-             ?>
-             <tr>
-                 <td><?php echo $no++;?></td>
-                 <td><?php echo $data['idproduksi'];?></td>
-                 <td><?php echo $data['tanggal'];?></td>
-                 <td><?php echo $data['jenis_kopi'];?></td>
-                 <td><?php echo $data['permintaan'];?></td>
-                 <td><?php echo $data['persediaan'];?></td>
-                 <td><?php echo $data['produksi'];?></td>
-                 <td>
-            
-                </td>
-             </tr>
-             <?php
-         }
-         ?>
+         
+
+                        <?php
+                            $no=0;
+                            $query = mysqli_query($koneksi, "SELECT * FROM perhitungan");
+                            {
+                                while ($hasil = mysqli_fetch_assoc($query))
+                                {
+                                    $no++;
+                                    echo"
+                                        <tr>
+                                            <td>$no</td>
+                                            <td>$hasil[idproduksi]</td>
+                                            <td>$hasil[tanggal]</td>
+                                            <td>$hasil[jenis_kopi]</td>
+                                            <td>$hasil[permintaan]</td>
+                                            <td>$hasil[persediaan]</td>
+                                            <td>$hasil[produksi]</td>
+                                            <td><a href='edit.php?idproduksi=$hasil[idproduksi]'>Edit</td>
+                                            <td><a href='delete.php?idproduksi=$hasil[idproduksi]' onclick='return hapus()'>Hapus</td>
+                                        </tr>
+                                    ";
+                                }
+                            }
+                        ?>
+
      </table>
+
 <body>
 <html>

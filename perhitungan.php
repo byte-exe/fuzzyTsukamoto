@@ -155,7 +155,7 @@
 			if ($nil[$i]<=$pmMin[$i]) {
 				$K[$i][1] = 0;
 			} else if ($nil[$i]>=$pmMin[$i] && $nil[$i]<=$pmMax[$i]) {
-				$K[$i][1] = ($nil[$i]-$vMin[$i])/($pmMax[$i]-$pmMin[$i]);
+				$K[$i][1] = ($nil[$i]-$pmMin[$i])/($pmMax[$i]-$pmMin[$i]);
 			} else if ($nil[$i]>=$pmMax[$i]) {
 				$K[$i][1] = 1;
 			}
@@ -204,7 +204,7 @@
 
 		}
 		@$hasil = $JumZ/$jumRule;
-		echo "<span style='font-size:xx-large;'><b>Jumlah Yang Harus Di Produksi : ".round($hasil).",-</b></span>";
+		echo "<span style='font-size:xx-large;'><b>Jumlah Yang Harus Di Produksi : ".round($hasil)." Barang</b></span>";
 	?>
     </form>
 

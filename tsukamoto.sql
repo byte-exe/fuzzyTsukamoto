@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2022 at 04:22 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Waktu pembuatan: 08 Mar 2022 pada 15.44
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- Struktur dari tabel `login`
 --
 
 CREATE TABLE `login` (
@@ -35,7 +35,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `login`
+-- Dumping data untuk tabel `login`
 --
 
 INSERT INTO `login` (`id_login`, `user`, `pass`, `id_member`) VALUES
@@ -44,57 +44,53 @@ INSERT INTO `login` (`id_login`, `user`, `pass`, `id_member`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perhitungan`
+-- Struktur dari tabel `perhitungan`
 --
 
 CREATE TABLE `perhitungan` (
+  `idproduksi` varchar(10) NOT NULL,
   `tanggal` date NOT NULL,
   `jenis_kopi` varchar(30) NOT NULL,
   `permintaan` int(10) NOT NULL,
   `persediaan` int(10) NOT NULL,
-  `produksi` int(10) NOT NULL,
-  `id` int(11) NOT NULL
+  `produksi` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `perhitungan`
+-- Dumping data untuk tabel `perhitungan`
 --
 
-INSERT INTO `perhitungan` (`tanggal`, `jenis_kopi`, `permintaan`, `persediaan`, `produksi`, `id`) VALUES
-('2022-02-19', 'Kopi 20 Gram', 20, 35, 15, 2),
-('2022-05-07', 'Kopi 50 Gram', 1, 2, 3, 6);
+INSERT INTO `perhitungan` (`idproduksi`, `tanggal`, `jenis_kopi`, `permintaan`, `persediaan`, `produksi`) VALUES
+('KP01', '2022-03-07', 'Kopi 20 Gram', 10, 30, 40),
+('KP02', '2022-03-08', 'Kopi 50 Gram', 20, 30, 100),
+('KP03', '2022-03-07', 'Kopi 20 Gram', 20, 60, 80),
+('KP04', '2022-03-08', 'Kopi 250 Gram', 250, 300, 120);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `login`
+-- Indeks untuk tabel `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id_login`);
 
 --
--- Indexes for table `perhitungan`
+-- Indeks untuk tabel `perhitungan`
 --
 ALTER TABLE `perhitungan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`idproduksi`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `login`
+-- AUTO_INCREMENT untuk tabel `login`
 --
 ALTER TABLE `login`
   MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `perhitungan`
---
-ALTER TABLE `perhitungan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
